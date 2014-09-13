@@ -5,6 +5,7 @@
 
 # Executables to build
 EXEC += proxy_example
+EXEC += func_params
 
 # Get the shell name to determine the OS
 UNAME := $(shell uname)
