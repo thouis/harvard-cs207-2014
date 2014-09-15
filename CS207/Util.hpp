@@ -107,4 +107,46 @@ std::istream& getline_parsed(std::istream& s, T& value)
 
 } // end namespace CS207
 
+
+
+/** Derive operator>, operator<=, and operator>= from a class's operator<.
+ *
+ * Usage:
+ * class MyClass : private less_than_comparable<MyClass> {
+ *   bool operator<(const MyClass& c) { ... }
+ * };
+ */
+template <typename T>
+struct less_than_comparable {
+  friend bool operator> (const T& a, const T& b) { return   b < a;  }
+  friend bool operator<=(const T& a, const T& b) { return !(b < a); }
+  friend bool operator>=(const T& a, const T& b) { return !(a < b); }
+};
+
+/** Derive operator!= from a class's operator==.
+ *
+ * Usage:
+ * class MyClass : private equality_comparable<MyClass> {
+ *   bool operator==(const MyClass& c) { ... }
+ * };
+ */
+template <typename T>
+struct equality_comparable {
+  friend bool operator!=(const T& a, const T& b) { return !(a == b); }
+};
+
+/** Derive operator!=, operator>, operator<=, and operator>=
+ * from a class's operator< and operator==.
+ *
+ * Usage:
+ * class MyClass : private equality_comparable<MyClass> {
+ *   bool operator< (const MyClass& c) { ... }
+ *   bool operator==(const MyClass& c) { ... }
+ * };
+ */
+template <typename T>
+struct totally_ordered
+    : less_than_comparable<T>, equality_comparable<T> {
+};
+
 #endif

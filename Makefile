@@ -6,6 +6,8 @@
 # Executables to build
 EXEC += primes
 EXEC += viewer
+EXEC += subgraph
+EXEC += shortest_path
 
 # Get the shell name to determine the OS
 UNAME := $(shell uname)
