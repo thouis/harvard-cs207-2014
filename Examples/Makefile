@@ -6,6 +6,7 @@
 # Executables to build
 EXEC += proxy_example
 EXEC += func_params
+EXEC += test_metrics
 
 # Get the shell name to determine the OS
 UNAME := $(shell uname)
@@ -23,7 +24,7 @@ DEPSFLAGS = -MD -MF $(DEPSFILE) -MP
 
 # Define any directories containing header files
 #   To include directories use -Ipath/to/files
-INCLUDES += -I.
+INCLUDES += -I. -I..
 
 # Define CXX compile flags
 CXXFLAGS += -O3 -funroll-loops -W -Wall -Wextra #-Wfatal-errors
@@ -34,7 +35,7 @@ LDFLAGS +=
 
 # Define any libraries to link into executable
 #   To link in libraries (libXXX.so or libXXX.a) use -lXXX
-LDLIBS += -lSDL -lGL -lGLU
+LDLIBS += #-lSDL -lGL -lGLU
 
 ##################
 # The following part of the makefile defines generic rules; it can be used to
