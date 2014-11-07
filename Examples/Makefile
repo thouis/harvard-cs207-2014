@@ -11,6 +11,7 @@ EXEC += trivial_copy
 EXEC += distance_dispatch
 EXEC += iterator_adaptor
 EXEC += iterator_adaptor_boost
+EXEC += expr_template
 
 # Get the shell name to determine the OS
 UNAME := $(shell uname)
